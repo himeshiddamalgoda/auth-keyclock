@@ -1,0 +1,14 @@
+{
+  "name": "keycloak-auth-demo",
+  "private": true,
+  "workspaces": ["apps/web", "apps/api"],
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,green \"npm run dev -w @demo/api\" \"npm run dev -w @demo/web\"",
+    "build": "npm run build -w @demo/api && npm run build -w @demo/web",
+    "lint": "npm run lint -w @demo/api && npm run lint -w @demo/web",
+    "test": "npm run test -w @demo/api && npm run test -w @demo/web"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
